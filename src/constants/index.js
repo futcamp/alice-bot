@@ -8,7 +8,8 @@ const commands = {
 const messages = {
 	WEATHER: {
 		STREET: 'Сейчас на улице'
-	}
+	},
+	NOT_FOUND: 'К сожалению я не знаю такой команды'
 };
 
 module.exports = {commands, messages};

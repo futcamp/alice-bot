@@ -67,7 +67,7 @@ app.post('/', async (req, res) => {
 			version,
 			session,
 			response: {
-				text: command || 'Hello!',
+				text: messages.NOT_FOUND || 'Hello!',
 				end_session: false
 			}
 		});
