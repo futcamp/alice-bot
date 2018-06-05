@@ -1,11 +1,10 @@
-const helpers = require('../helpers');
+const Helpers = require('../helpers');
 const {messages, commands} = require('../constants');
 
 module.exports = (params) => {
 	const {version, session, request: {command}} = params;
-	const phrase = command.toLowerCase();
 
-	if (phrase === 'no text') {
+	if (Helpers.checkCommand(command, 'no text')) {
 		return {
 			version,
 			session,
@@ -14,32 +13,32 @@ module.exports = (params) => {
 				end_session: false
 			}
 		};
-	} else if (phrase === 'no version') {
+	} else if (Helpers.checkCommand(command, 'no version')) {
 		return {
 			session,
 			response: {
-				text: phrase || 'Hello!',
+				text: command || 'Hello!',
 				end_session: false
 			}
 		};
-	} else if (phrase === 'no session') {
+	} else if (Helpers.checkCommand(command, 'no session')) {
 		return {
 			version,
 			response: {
-				text: phrase || 'Hello!',
+				text: command || 'Hello!',
 				end_session: false
 			}
 		};
-	} else if (phrase === 'end session') {
+	} else if (Helpers.checkCommand(command, 'end session')) {
 		return {
 			version,
 			session,
 			response: {
-				text: phrase || 'Hello!',
+				text: command || 'Hello!',
 				end_session: true
 			}
 		};
-	} else if (commands.WEATHER.STREET.some(item => item === phrase)) {
+	} else if (Helpers.checkCommand(command, commands.WEATHER.STREET)) {
 		return {
 			version,
 			session,
@@ -48,12 +47,30 @@ module.exports = (params) => {
 				end_session: false
 			}
 		};
-	} else if (commands.WELCOME.some(item => item === phrase)) {
+	} else if (Helpers.checkCommand(command, commands.WELCOME)) {
 		return {
 			version,
 			session,
 			response: {
 				text: messages.WELCOME,
+				end_session: false
+			}
+		};
+	} else if (Helpers.checkCommand(command, commands.SKILL)) {
+		return {
+			version,
+			session,
+			response: {
+				text: messages.SKILL,
+				end_session: false
+			}
+		};
+	} else if (Helpers.checkCommand(command, commands.ABOUT_ME)) {
+		return {
+			version,
+			session,
+			response: {
+				text: messages.ABOUT_ME,
 				end_session: false
 			}
 		};
