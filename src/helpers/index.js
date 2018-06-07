@@ -1,6 +1,6 @@
 const methods = {
 	checkCommand(command, listCommands) {
-		const phrase = command.toLowerCase();
+		const phrase = command.trim().toLowerCase();
 
 		if (typeof listCommands === 'string') {
 			return phrase === listCommands;
