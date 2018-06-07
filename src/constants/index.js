@@ -4,7 +4,6 @@ const commands = {
 		HOME: ['температура в доме']
 	},
 	WELCOME: ['запусти навык фут кэмп', 'привет'],
-	ERRORS: ['no text', 'no version', 'no session', 'end session'],
 	SKILL: ['что умеешь', 'что знаешь', 'умения'],
 	ABOUT_ME: ['как дела', 'как ты', 'как настроение']
 };
