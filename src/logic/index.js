@@ -1,9 +1,9 @@
 const Helpers = require('../helpers');
-const {messages, commands} = require('../constants');
+const {messages, commands, buttons} = require('../constants');
 
 module.exports = (params) => {
 	const {version, session, request: {command}} = params;
-
+	
 	if (Helpers.checkCommand(command, 'no text')) {
 		return {
 			version,
@@ -47,12 +47,22 @@ module.exports = (params) => {
 				end_session: false
 			}
 		};
+	} else if (Helpers.checkCommand(command, commands.WEATHER.HOME)) {
+		return {
+			version,
+			session,
+			response: {
+				text: `${messages.WEATHER.HOME} ${Math.floor(Math.random() * 10) + 1} градусов`,
+				end_session: false
+			}
+		};
 	} else if (Helpers.checkCommand(command, commands.WELCOME)) {
 		return {
 			version,
 			session,
 			response: {
 				text: messages.WELCOME,
+				buttons: Helpers.getButtons(buttons.GENERAL),
 				end_session: false
 			}
 		};

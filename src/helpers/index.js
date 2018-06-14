@@ -8,6 +8,9 @@ const methods = {
 			return listCommands.some(item => item === phrase);
 		}
 	},
+	getButtons(list) {
+		return list.map((title) => ({title}));
+	}
 };
 
 module.exports = methods;
