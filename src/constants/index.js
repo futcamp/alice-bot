@@ -20,7 +20,8 @@ const messages = {
 };
 
 const buttons = {
-	GENERAL: ['Погода на улице', 'Что умеешь', 'Как дела', 'Температура в доме']
+	WELCOME: ['погода на улице', 'что умеешь', 'как дела', 'температура в доме'],
+	WEATHER: ['что умеешь', 'как дела']
 };
 
 module.exports = {commands, messages, buttons};

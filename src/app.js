@@ -6,8 +6,8 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/', (req, res) => {
-	res.json(getResponse(req.body));
+app.post('/', async (req, res) => {
+	res.json(await getResponse(req.body));
 });
 
 app.use('*', (req, res) => {

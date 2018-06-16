@@ -1,7 +1,7 @@
 const Helpers = require('../helpers');
 const {messages, commands, buttons} = require('../constants');
 
-module.exports = (params) => {
+module.exports = async (params) => {
 	const {version, session, request: {command}} = params;
 	
 	if (Helpers.checkCommand(command, 'no text')) {
@@ -43,7 +43,8 @@ module.exports = (params) => {
 			version,
 			session,
 			response: {
-				text: `${messages.WEATHER.STREET} ${Math.floor(Math.random() * 10) + 1} градусов`,
+				text: `${messages.WEATHER.STREET} ${Math.floor(Math.random() * 10) + 1}°`,
+				buttons: Helpers.getButtons(buttons.WEATHER),
 				end_session: false
 			}
 		};
@@ -52,7 +53,8 @@ module.exports = (params) => {
 			version,
 			session,
 			response: {
-				text: `${messages.WEATHER.HOME} ${Math.floor(Math.random() * 10) + 1} градусов`,
+				text: `${messages.WEATHER.HOME} ${Math.floor(Math.random() * 10) + 1}°`,
+				buttons: Helpers.getButtons(buttons.WEATHER),
 				end_session: false
 			}
 		};
@@ -62,7 +64,7 @@ module.exports = (params) => {
 			session,
 			response: {
 				text: messages.WELCOME,
-				buttons: Helpers.getButtons(buttons.GENERAL),
+				buttons: Helpers.getButtons(buttons.WELCOME),
 				end_session: false
 			}
 		};
@@ -72,6 +74,7 @@ module.exports = (params) => {
 			session,
 			response: {
 				text: messages.SKILL,
+				buttons: Helpers.getButtons(buttons.WELCOME),
 				end_session: false
 			}
 		};
@@ -81,6 +84,7 @@ module.exports = (params) => {
 			session,
 			response: {
 				text: messages.ABOUT_ME,
+				buttons: Helpers.getButtons(buttons.WELCOME),
 				end_session: false
 			}
 		};
@@ -90,6 +94,7 @@ module.exports = (params) => {
 			session,
 			response: {
 				text: messages.NOT_FOUND || 'Hello!',
+				buttons: Helpers.getButtons(buttons.WELCOME),
 				end_session: false
 			}
 		};
